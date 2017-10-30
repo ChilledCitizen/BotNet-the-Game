@@ -59,10 +59,10 @@ public class RobotMovement : MonoBehaviour {
             }
         }
 
-       /* if (other.gameObject.tag == "Robot")
+       if (other.gameObject.tag == "Robot")
         {
-            GetComponent<BoxCollider2D>().isTrigger = true;
-        }*/
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.gameObject.GetComponent<Collider2D>());
+        }
     }
 
     /*void OnCollisionExit2D(Collision2D other)
