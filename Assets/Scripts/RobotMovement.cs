@@ -49,11 +49,20 @@ public class RobotMovement : MonoBehaviour {
 
         if (other.gameObject.tag == "Wall")
         {
+            /*Collider2D col = other.gameObject.GetComponent<Collider2D>();
+
+            Vector3 contactPoint = other.contacts[0].point;
+            Vector3 center = col.bounds.center;
+
+            bool right = contactPoint.x > center.x;
+            bool top = contactPoint.y > center.y;
+            */
+
             if (goingRight == true)
             {
                 goingRight = false;
             }
-            else
+            else 
             {
                 goingRight = true;
             }
