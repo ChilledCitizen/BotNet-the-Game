@@ -74,11 +74,14 @@ public class RobotMovement : MonoBehaviour {
         }
     }
 
-    /*void OnCollisionExit2D(Collision2D other)
+    void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Robot")
+
+        if (other.gameObject.tag == "Floor")
         {
-            GetComponent<BoxCollider2D>().isTrigger = false;
+            
         }
-    }*/
+
+    }
+    
 }
