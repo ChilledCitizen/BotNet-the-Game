@@ -5,10 +5,11 @@ using UnityEngine;
 public class RobotMovement : MonoBehaviour {
 
     public bool goingRight, isGrounded;
-    public float movementSpeed;
+    public float movementSpeed, timer;
+    private float deltaTime;
 
     [HideInInspector]
-    public Rigidbody2D rb;
+    public Rigidbody rb;
 
     [HideInInspector]
     public Vector2 location;
@@ -19,7 +20,7 @@ public class RobotMovement : MonoBehaviour {
 
         goingRight = true;
         isGrounded = false;
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
 		
 	}
 	
@@ -40,16 +41,13 @@ public class RobotMovement : MonoBehaviour {
         
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Floor")
-        {
-            isGrounded = true;
-        }
+        
 
         if (other.gameObject.tag == "Wall")
         {
-            /*Collider2D col = other.gameObject.GetComponent<Collider2D>();
+            /*Collider col = other.gameObject.GetComponent<Collider>();
 
             Vector3 contactPoint = other.contacts[0].point;
             Vector3 center = col.bounds.center;
@@ -61,6 +59,7 @@ public class RobotMovement : MonoBehaviour {
             if (goingRight == true)
             {
                 goingRight = false;
+                
             }
             else 
             {
@@ -70,18 +69,33 @@ public class RobotMovement : MonoBehaviour {
 
        if (other.gameObject.tag == "Robot")
         {
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.gameObject.GetComponent<Collider2D>());
+            Physics.IgnoreCollision(GetComponent<SphereCollider>(), other.gameObject.GetComponent<SphereCollider>());
         }
     }
 
-    //void OnCollisionExit2D(Collision2D other)
-    //{
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.tag == "Floor")
+        {
+            isGrounded = true;
+        }
+    }
 
-    //    if (other.gameObject.tag == "Floor")
-    //    {
-            
-    //    }
+    void OnCollisionExit(Collision other)
+    {
 
-    //}
-    
+        if (other.gameObject.tag == "Floor")
+        {
+
+            StartCoroutine(DropFromLedge());
+            isGrounded = false;
+        }
+
+    }
+
+    IEnumerator DropFromLedge()
+    {
+        yield return new WaitForSeconds(timer);
+    }
+
 }
