@@ -1,2 +1,6 @@
 Temp/UnityLockfile
 .vs/
+*.info
+*.bin
+Temp/
+Library/metadata/
