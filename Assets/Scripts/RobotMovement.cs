@@ -9,7 +9,7 @@ public class RobotMovement : MonoBehaviour {
     private float deltaTime;
 
     [HideInInspector]
-    public Rigidbody rb;
+    public Rigidbody2D rb;
 
     [HideInInspector]
     public Vector2 location;
@@ -20,7 +20,7 @@ public class RobotMovement : MonoBehaviour {
 
         goingRight = true;
         isGrounded = false;
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
 		
 	}
 	
@@ -41,7 +41,7 @@ public class RobotMovement : MonoBehaviour {
         
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollision2DEnter(Collision2D other)
     {
         
 
@@ -69,11 +69,11 @@ public class RobotMovement : MonoBehaviour {
 
        if (other.gameObject.tag == "Robot")
         {
-            Physics.IgnoreCollision(GetComponent<SphereCollider>(), other.gameObject.GetComponent<SphereCollider>());
+            Physics2D.IgnoreCollision(GetComponent<PolygonCollider2D>(), other.gameObject.GetComponent<PolygonCollider2D>());
         }
     }
 
-    private void OnCollisionStay(Collision other)
+    private void OnCollision2DStay(Collision2D other)
     {
         if (other.gameObject.tag == "Floor")
         {
@@ -81,7 +81,7 @@ public class RobotMovement : MonoBehaviour {
         }
     }
 
-    void OnCollisionExit(Collision other)
+    void OnCollision2DExit(Collision2D other)
     {
 
         if (other.gameObject.tag == "Floor")
