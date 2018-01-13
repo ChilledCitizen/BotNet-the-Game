@@ -7,14 +7,14 @@ public class StairController : MonoBehaviour {
 
 	public bool goingUp;
 	public Sprite upArrow, forwardArrow;
-	public PolygonCollider2D stairs;
+	public BoxCollider stairs;
 
 	// Use this for initialization
 	void Start () {
 
 			if(!stairs)
 			{
-				stairs = GetComponentInChildren<PolygonCollider2D>();
+				stairs = GetComponentInChildren<BoxCollider>();
 			}
 
 			stairs.enabled = false;

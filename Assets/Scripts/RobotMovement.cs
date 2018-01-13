@@ -36,6 +36,8 @@ public class RobotMovement : MonoBehaviour {
         if (goingRight == false && isGrounded)
         {
             rb.velocity = Vector2.left * movementSpeed;
+
+        
         }
 
         
@@ -59,11 +61,14 @@ public class RobotMovement : MonoBehaviour {
             if (goingRight == true)
             {
                 goingRight = false;
+                transform.Rotate(0,180,0);
                 
             }
             else 
             {
                 goingRight = true;
+                transform.Rotate(0,180,0);
+                
             }
         }
 
