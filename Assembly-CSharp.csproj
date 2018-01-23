@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\RampController.cs" />
      <Compile Include="Assets\Scripts\RobotMovement.cs" />
      <Compile Include="Assets\Scripts\RobotSpawner.cs" />
+     <Compile Include="Assets\Scripts\SceneScript.cs" />
      <Compile Include="Assets\Scripts\StairController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
