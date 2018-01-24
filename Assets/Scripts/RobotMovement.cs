@@ -74,7 +74,7 @@ public class RobotMovement : MonoBehaviour {
 
        if (other.gameObject.tag == "Robot")
         {
-            Physics.IgnoreCollision(GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
+            Physics.IgnoreCollision(GetComponent<SphereCollider>(), other.gameObject.GetComponent<SphereCollider>());
         }
     }
 
@@ -83,6 +83,8 @@ public class RobotMovement : MonoBehaviour {
         if (other.gameObject.tag == "Floor")
         {
             isGrounded = true;
+
+
         }
     }
 
