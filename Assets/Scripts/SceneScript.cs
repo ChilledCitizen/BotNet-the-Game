@@ -12,17 +12,18 @@ public class SceneScript : MonoBehaviour
 
     public int options = 1;
     public int scoreScreen = 2;
+    public Scene curScene;
     void Awake()
     {
 
 
-		DontDestroyOnLoad(transform.gameObject);
+		//DontDestroyOnLoad(transform.gameObject);
     }
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-
+        curScene = SceneManager.GetActiveScene();
     }
 
 
@@ -36,5 +37,18 @@ public class SceneScript : MonoBehaviour
 	{
 		SceneManager.LoadScene(options);
 	}
+
+    public void QuitPress()
+    {
+        Application.Quit();
+    }
+
+
+    public void LoadLevel(int levelID)
+    {
+        SceneManager.LoadScene(levelID);
+    }
+
+
 
 }
